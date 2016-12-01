@@ -119,7 +119,11 @@ Networking topic.
 
 Starting with Docker for Mac Beta 27 and Stable 1.12.3, all trusted certificate authorities (CAs) (root or intermediate) are supported.
 
-Docker for Mac creates a certificate bundle of all user-trusted CAs based on the Mac Keychain, and appends it to Moby trusted certificates. So if an enterprise SSL certificate is trusted by the user on the host, it will be trusted by Docker for Mac.
+Docker for Mac creates a certificate bundle of all user-trusted CAs based on the Mac Keychain, and appends it to Moby trusted certificates. So if an enterprise SSL certificate is trusted by the user on the host, it will be trusted by Docker for Mac. If you have a certificate file that you want to add the Mac Keychain, an easy way to do this is with the `security add-trusted-cert` command:
+
+    sudo security add-trusted-cert -d -r trustAsRoot -k /Library/Keychains/System.keychain reg.crt
+
+Where `reg.crt` is the certificate you want to add.
 
 ### What are system requirements for Docker for Mac?
 
